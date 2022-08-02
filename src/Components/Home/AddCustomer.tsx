@@ -20,14 +20,19 @@ export default function AddCustomer() {
         };
 
         addCustomer(newCustomerInfo)
-            .then((res) =>
-                alert("Add customer successfully. Click Ok to back to product page!")
-            )
+            .then((res) => {
+                if (res.status == 200) {
+                    alert("Thêm khách hàng thành công.")
+                }
+                else {
+                    alert("Thêm khách hàng thất bại.")
+                }
+            })
             .catch((err) => console.log(err));
     }
     return (
         <div className="m-4">
-            <Navbar/>
+            <Navbar />
             <div className="container m-4">
                 <form onSubmit={(e) => handleSubmit(e)}>
                     <div className="col">

@@ -15,7 +15,7 @@ export function addEmployee(employee: Employee) {
         method: "POST",
         url: `http://localhost:34041/api/Employee`,
         data: employee
-    }).then(res => console.log(res))
+    }).then(res => res.data)
         .catch(err => console.log(err))
 }
 
@@ -28,11 +28,11 @@ export function deleteEmployee(id: string) {
         .catch(err => console.error(err))
 }
 
-export function getBookStoreID(){
+export function getBookStoreID() {
     return axios({
-        method:"GET",
-        url:'http://localhost:34041/api/System/book-store-id'
+        method: "GET",
+        url: 'http://localhost:34041/api/System/book-store-id'
     }).then(res => res.data)
-    .catch(err => console.error(err))
+        .catch(err => console.error(err))
 
 }

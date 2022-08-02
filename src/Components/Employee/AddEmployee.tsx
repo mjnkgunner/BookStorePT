@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { addEmployee } from "../apies/employee";
+import { addEmployee, getBookStoreID } from "../apies/employee";
 import Navbar from "../Nav/Navbar";
 
 export default function AddEmployee() {
@@ -11,6 +11,9 @@ export default function AddEmployee() {
     const [Position, setPosition] = useState("");
     const [BookStoreID, setBookStoreID] = useState("");
 
+    getBookStoreID().then(id => {
+        setBookStoreID(id)
+    });
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -21,13 +24,18 @@ export default function AddEmployee() {
             UserName: Username,
             Password: Password,
             Position: Position,
-            BookStoreID: 'CN2',
+            BookStoreID: BookStoreID,
         };
 
         addEmployee(newEmployeeInfo)
-            .then((res) =>
-                alert("Add employee successfully. Click Ok to back to product page!")
-            )
+            .then((res) => {
+                if (res.status == 200) {
+                    alert("Thêm người dùng thành công.")
+                }
+                else {
+                    alert("Thêm người dùng thất bại.")
+                }
+            })
             .catch((err) => console.log(err));
     }
     return (
@@ -126,8 +134,7 @@ export default function AddEmployee() {
                                     type="text"
                                     className="form-control"
                                     id="BookStoreID"
-                                    value='CN2'
-                                    onChange={(e) => setBookStoreID(e.target.value)}
+                                    value={BookStoreID}
                                     required
                                     disabled
                                 />

@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
+import { getBookStoreID } from "../apies/employee";
 
 export default function Navbar() {
-    let a = "CN2";
+    let bookStoreId: string = '';
+    getBookStoreID().then(id => {
+        bookStoreId = id;
+    });
     return (
         <div >
             <div>
-                <h1 className="imgCover">Quản lí cửa hàng sách chi nhánh: {a}</h1>
+                <h1>Quản lí cửa hàng sách chi nhánh: {bookStoreId}</h1>
             </div>
             {/* <img src={require('./671822c2f63dd5f65d8fd15c9710420b.jpg')} className="img-fluid"/> */}
             <nav className="navbar navbar-expand-lg navbar-light bg-light">

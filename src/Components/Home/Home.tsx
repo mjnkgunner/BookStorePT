@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getCustomer } from "../apies/customer";
+import { deleteCustomer, getCustomer } from "../apies/customer";
 import { Link } from "react-router-dom";
 import Navbar from "../Nav/Navbar";
 
@@ -18,14 +18,27 @@ export default function Home() {
             }, [] as Customer[]));
         }).catch(err => console.error(err))
     }, [])
+
     const _onChangeSearchCustomer = (value: string) => {
         setResult(listCustomer.filter(item => {
             return item.CustomerName.toLowerCase().includes(value)
         }))
     }
+
+    const handleDelete = (id: string) => {
+        deleteCustomer(id).then((res) => {
+            if (res.status === 200) {
+                alert("Xoá khách hàng thành công.")
+            }
+            else {
+                alert("Xoá khách hàng thất bại.")
+            }
+        })
+    }
+
     return (
         <div className="m-4">
-            <Navbar/>
+            <Navbar />
             <h2>Quản lí khách hàng</h2>
             <div className="col-12 col-md-4">
                 <input
@@ -46,25 +59,33 @@ export default function Home() {
                             <th scope="col">Tên Khách Hàng</th>
                             <th scope="col">Địa chỉ</th>
                             <th scope="col">Số điện thoại</th>
+                            <th scope="col"></th>
                         </tr>
-                        
+
                     </thead>
                     <tbody>
-                            {result ? (
-                                result.map((customer) => {
-                                    return (
-                                        <tr key={customer.CustomerID}>
-                                            <th scope="row">{customer.CustomerID}</th>
-                                            <td >{customer.CustomerName}</td>
-                                            <td>{customer.Address}</td>
-                                            <td>{customer.PhoneNumber}</td>
-                                        </tr>
-                                    )
-                                })
-                            ) : (
-                                <></>
-                            )}
-                        </tbody>
+                        {result ? (
+                            result.map((customer) => {
+                                return (
+                                    <tr key={customer.CustomerID}>
+                                        <th scope="row">{customer.CustomerID}</th>
+                                        <td >{customer.CustomerName}</td>
+                                        <td>{customer.Address}</td>
+                                        <td>{customer.PhoneNumber}</td>
+                                        <button
+                                            type="button"
+                                            className="btn btn-danger"
+                                            onClick={() => handleDelete(customer.CustomerID)}
+                                        >
+                                            Delete
+                                        </button>
+                                    </tr>
+                                )
+                            })
+                        ) : (
+                            <></>
+                        )}
+                    </tbody>
                 </table>
             </div>
         </div>

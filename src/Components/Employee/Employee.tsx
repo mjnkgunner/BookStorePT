@@ -1,4 +1,4 @@
-import { getEmployee } from "../apies/employee";
+import { deleteEmployee, getEmployee } from "../apies/employee";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../Nav/Navbar";
@@ -6,7 +6,7 @@ import Navbar from "../Nav/Navbar";
 export default function Employee() {
     const [listEmployee, setlistEmployee] = useState<Employee[]>([]);
     const [result, setResult] = useState<Employee[]>([]);
-    
+
     useEffect(() => {
         getEmployee().then(data => {
             setlistEmployee(data.reduce((prev: Employee[], next: Employee) => {
@@ -17,14 +17,26 @@ export default function Employee() {
             }, [] as Employee[]));
         }).catch(err => console.error(err))
     }, [])
+
     const _onChangeSearchEmployee = (value: string) => {
         setResult(listEmployee.filter(item => {
             return item.EmployeeName.toLowerCase().includes(value)
         }))
     }
+
+    const handleDelete = (id: string) => {
+        deleteEmployee(id).then((res) => {
+            if (res.status == 200) {
+                alert("Xoá nhân viên thành công.")
+            }
+            else {
+                alert("Xoá nhân viên thất bại.")
+            }
+        })
+    }
     return (
         <div className="m-4">
-            <Navbar/>
+            <Navbar />
             <h2>Quản lí Nhân Viên</h2>
             <div className="col-12 col-md-4">
                 <input
@@ -47,26 +59,34 @@ export default function Employee() {
                             <th scope="col">Password</th>
                             <th scope="col">Vị Trí</th>
                             <th scope="col">Mã Nhà Sách</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                            {result ? (
-                                result.map((employee) => {
-                                    return (
-                                        <tr key={employee.EmployeeID}>
-                                            <th  scope="row">{employee.EmployeeID}</th>
-                                            <td>{employee.EmployeeName}</td>
-                                            <td>{employee.UserName}</td>
-                                            <td>{employee.Password}</td>
-                                            <td>{employee.Position}</td>
-                                            <td>{employee.BookStoreID}</td>
-                                        </tr>
-                                    )
-                                })
-                            ) : (
-                                <></>
-                            )}
-                        </tbody>
+                        {result ? (
+                            result.map((employee) => {
+                                return (
+                                    <tr key={employee.EmployeeID}>
+                                        <th scope="row">{employee.EmployeeID}</th>
+                                        <td>{employee.EmployeeName}</td>
+                                        <td>{employee.UserName}</td>
+                                        <td>{employee.Password}</td>
+                                        <td>{employee.Position}</td>
+                                        <td>{employee.BookStoreID}</td>
+                                        <button
+                                            type="button"
+                                            className="btn btn-danger"
+                                            onClick={() => handleDelete(employee.EmployeeID)}
+                                        >
+                                            Delete
+                                        </button>
+                                    </tr>
+                                )
+                            })
+                        ) : (
+                            <></>
+                        )}
+                    </tbody>
                 </table>
             </div>
         </div>
