@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { addEmployee, getBookStoreID } from "../apies/employee";
 import Navbar from "../Nav/Navbar";
 
@@ -32,10 +32,10 @@ export default function AddEmployee() {
 
         addEmployee(newEmployeeInfo)
             .then((res) => {
-                    alert("Thêm người dùng thành công.")
+                window.location.pathname = '/employee'
             })
             .catch((err) => {
-                alert("Thêm người dùng thất bại.")
+                alert("Thêm nhân viên thất bại.")
                 console.log(err)
             });
     }

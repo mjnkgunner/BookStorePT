@@ -21,7 +21,7 @@ export default function AddCustomer() {
 
         addCustomer(newCustomerInfo)
             .then((res) => {
-                alert("Thêm khách hàng thành công.")
+                window.location.pathname = '/home'
             })
             .catch((err) => {
                 console.log(err)

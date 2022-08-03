@@ -27,6 +27,7 @@ export default function Employee() {
     const handleDelete = (id: string) => {
         deleteEmployee(id).then((res) => {
             // alert("Xoá nhân viên thành công.")
+            window.location.pathname = '/employee'
         })
             .catch(err => {
                 console.log(err);

@@ -27,7 +27,7 @@ export default function Home() {
 
     const handleDelete = (id: string) => {
         deleteCustomer(id).then((res) => {
-                // alert("Xoá khách hàng thành công.")
+                window.location.pathname = '/home'
                 console.log(res.status);
                 
         })
