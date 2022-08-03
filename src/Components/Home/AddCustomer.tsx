@@ -21,7 +21,7 @@ export default function AddCustomer() {
 
         addCustomer(newCustomerInfo)
             .then((res) => {
-                if (res.status == 200) {
+                if (res.status === 200) {
                     alert("Thêm khách hàng thành công.")
                 }
                 else {

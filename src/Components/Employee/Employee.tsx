@@ -26,7 +26,7 @@ export default function Employee() {
 
     const handleDelete = (id: string) => {
         deleteEmployee(id).then((res) => {
-            if (res.status == 200) {
+            if (res.status === 200) {
                 alert("Xoá nhân viên thành công.")
             }
             else {
@@ -59,7 +59,7 @@ export default function Employee() {
                             <th scope="col">Password</th>
                             <th scope="col">Vị Trí</th>
                             <th scope="col">Mã Nhà Sách</th>
-                            <th scope="col"></th>
+                            <th scope="col">Xoá Nhân Viên</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -73,13 +73,15 @@ export default function Employee() {
                                         <td>{employee.Password}</td>
                                         <td>{employee.Position}</td>
                                         <td>{employee.BookStoreID}</td>
-                                        <button
-                                            type="button"
-                                            className="btn btn-danger"
-                                            onClick={() => handleDelete(employee.EmployeeID)}
-                                        >
-                                            Delete
-                                        </button>
+                                        <td>
+                                            <button
+                                                type="button"
+                                                className="btn btn-danger deleteButton"
+                                                onClick={() => handleDelete(employee.EmployeeID)}
+                                            >
+                                                Xoá
+                                            </button>
+                                        </td>
                                     </tr>
                                 )
                             })

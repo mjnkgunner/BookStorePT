@@ -59,7 +59,7 @@ export default function Home() {
                             <th scope="col">Tên Khách Hàng</th>
                             <th scope="col">Địa chỉ</th>
                             <th scope="col">Số điện thoại</th>
-                            <th scope="col"></th>
+                            <th scope="col">Xoá Khách Hàng</th>
                         </tr>
 
                     </thead>
@@ -72,13 +72,15 @@ export default function Home() {
                                         <td >{customer.CustomerName}</td>
                                         <td>{customer.Address}</td>
                                         <td>{customer.PhoneNumber}</td>
-                                        <button
-                                            type="button"
-                                            className="btn btn-danger"
-                                            onClick={() => handleDelete(customer.CustomerID)}
-                                        >
-                                            Delete
-                                        </button>
+                                        <td>
+                                            <button
+                                                type="button"
+                                                className="btn btn-danger deleteButton"
+                                                onClick={() => handleDelete(customer.CustomerID)}
+                                            >
+                                                Xoá
+                                            </button>
+                                        </td>
                                     </tr>
                                 )
                             })

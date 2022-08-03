@@ -29,7 +29,7 @@ export default function AddEmployee() {
 
         addEmployee(newEmployeeInfo)
             .then((res) => {
-                if (res.status == 200) {
+                if (res.status === 200) {
                     alert("Thêm người dùng thành công.")
                 }
                 else {
