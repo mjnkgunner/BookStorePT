@@ -5,7 +5,7 @@ export function getEmployee() {
         url: `http://localhost:34041/api/Employee`
     }).then((res) => {
         console.log(res);
-        return JSON.parse(res.data.data)
+        return JSON.parse(res.data)
     })
         .catch(err => console.error(err))
 }
@@ -24,7 +24,7 @@ export function deleteEmployee(id: string) {
         method: "DELETE",
         url: `http://localhost:34041/api/Employee/${id}`,
 
-    }).then(res => res.data.data)
+    }).then(res => res.data)
         .catch(err => console.error(err))
 }
 
