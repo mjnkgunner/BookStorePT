@@ -4,8 +4,8 @@ export function getEmployee() {
         method: "GET",
         url: `http://localhost:34041/api/Employee`
     }).then((res) => {
-        console.log(res);
-        return JSON.parse(res.data)
+        // console.log(res.data);
+        return res.data
     })
         .catch(err => console.error(err))
 }
@@ -32,7 +32,10 @@ export function getBookStoreID() {
     return axios({
         method: "GET",
         url: 'http://localhost:34041/api/System/book-store-id'
-    }).then(res => res.data)
+    }).then((res) => {
+        // console.log(res.data);
+        return res.data;
+    })
         .catch(err => console.error(err))
 
 }

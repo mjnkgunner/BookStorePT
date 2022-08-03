@@ -1,11 +1,15 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getBookStoreID } from "../apies/employee";
 
 export default function Navbar() {
-    let bookStoreId: string = '';
-    getBookStoreID().then(id => {
-        bookStoreId = id;
-    });
+    const [bookStoreId, setbookStoreId] = useState("");
+    useEffect(() => {
+      getBookStoreID().then(id=>{
+            setbookStoreId(id)
+      })
+    }, [bookStoreId])
+    
     return (
         <div >
             <div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { addEmployee, getBookStoreID } from "../apies/employee";
 import Navbar from "../Nav/Navbar";
@@ -11,9 +11,12 @@ export default function AddEmployee() {
     const [Position, setPosition] = useState("");
     const [BookStoreID, setBookStoreID] = useState("");
 
-    getBookStoreID().then(id => {
+    useEffect(() => {
+      getBookStoreID().then(id=>{
         setBookStoreID(id)
-    });
+      })
+    }, [BookStoreID])
+    
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();

@@ -3,7 +3,7 @@ export function getCustomer() {
     return axios({
         method: "GET",
         url: `http://localhost:34041/api/Customer`
-    }).then(res => JSON.parse(res.data))
+    }).then(res => res.data)
         .catch(err => console.error(err))
 }
 
@@ -12,7 +12,7 @@ export function addCustomer(customer: Customer) {
         method: "POST",
         url: `http://localhost:34041/api/Customer`,
         data: customer
-    }).then(res => JSON.parse(res.data))
+    }).then(res => res.data)
         .catch(err => console.log(err))
 }
 export function deleteCustomer(id: string) {
