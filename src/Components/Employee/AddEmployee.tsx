@@ -12,11 +12,11 @@ export default function AddEmployee() {
     const [BookStoreID, setBookStoreID] = useState("");
 
     useEffect(() => {
-      getBookStoreID().then(id=>{
-        setBookStoreID(id)
-      })
+        getBookStoreID().then(id => {
+            setBookStoreID(id)
+        })
     }, [BookStoreID])
-    
+
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -32,14 +32,12 @@ export default function AddEmployee() {
 
         addEmployee(newEmployeeInfo)
             .then((res) => {
-                if (res.status === 200) {
                     alert("Thêm người dùng thành công.")
-                }
-                else {
-                    alert("Thêm người dùng thất bại.")
-                }
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                alert("Thêm người dùng thất bại.")
+                console.log(err)
+            });
     }
     return (
         <div className="m-4">

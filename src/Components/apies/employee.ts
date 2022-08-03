@@ -15,7 +15,10 @@ export function addEmployee(employee: Employee) {
         method: "POST",
         url: `http://localhost:34041/api/Employee`,
         data: employee
-    }).then(res => res.data)
+    }).then((res) => {
+        console.log(res.data);
+        return res.data
+    })
         .catch(err => console.log(err))
 }
 

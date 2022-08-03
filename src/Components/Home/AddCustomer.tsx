@@ -21,14 +21,12 @@ export default function AddCustomer() {
 
         addCustomer(newCustomerInfo)
             .then((res) => {
-                if (res.status === 200) {
-                    alert("Thêm khách hàng thành công.")
-                }
-                else {
-                    alert("Thêm khách hàng thất bại.")
-                }
+                alert("Thêm khách hàng thành công.")
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                console.log(err)
+                alert("Thêm khách hàng thất bại.")
+            });
     }
     return (
         <div className="m-4">

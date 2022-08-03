@@ -26,13 +26,12 @@ export default function Employee() {
 
     const handleDelete = (id: string) => {
         deleteEmployee(id).then((res) => {
-            if (res.status === 200) {
-                alert("Xoá nhân viên thành công.")
-            }
-            else {
-                alert("Xoá nhân viên thất bại.")
-            }
+            // alert("Xoá nhân viên thành công.")
         })
+            .catch(err => {
+                console.log(err);
+                alert("Xoá nhân viên thất bại.")
+            })
     }
     return (
         <div className="m-4">

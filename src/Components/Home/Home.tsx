@@ -27,12 +27,13 @@ export default function Home() {
 
     const handleDelete = (id: string) => {
         deleteCustomer(id).then((res) => {
-            if (res.status === 200) {
-                alert("Xoá khách hàng thành công.")
-            }
-            else {
-                alert("Xoá khách hàng thất bại.")
-            }
+                // alert("Xoá khách hàng thành công.")
+                console.log(res.status);
+                
+        })
+        .catch(err =>{
+            console.log(err);
+            alert("Xoá khách hàng thất bại.")
         })
     }
 
