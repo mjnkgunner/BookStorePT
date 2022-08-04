@@ -5,6 +5,7 @@ import Home from './Components/Home/Home';
 import Employee from './Components/Employee/Employee';
 import AddEmployee from './Components/Employee/AddEmployee';
 import AddCustomer from './Components/Home/AddCustomer';
+import Shop from './Components/shop/Shop';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
        <Routes>
        <Route path="/" element={<Navigate to="/home" />} />
        <Route path="/home" element={<Home />} />
+       <Route path="/shop" element={<Shop />} />
        <Route path="/home/addcustomer" element={<AddCustomer />} />
        <Route path="/employee" element={<Employee />} />
        <Route path="/employee/addemployee" element={<AddEmployee />} />

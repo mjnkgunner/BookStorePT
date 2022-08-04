@@ -37,7 +37,7 @@ export default function Employee() {
     return (
         <div className="m-4">
             <Navbar />
-            <h2>Quản lí Nhân Viên</h2>
+            <h2 className="mt-3 mb-3">Quản lí Nhân Viên</h2>
             <div className="col-12 col-md-4">
                 <input
                     type="text"

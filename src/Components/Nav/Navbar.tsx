@@ -5,15 +5,18 @@ import { getBookStoreID } from "../apies/employee";
 export default function Navbar() {
     const [bookStoreId, setbookStoreId] = useState("");
     useEffect(() => {
-      getBookStoreID().then(id=>{
+        getBookStoreID().then(id => {
             setbookStoreId(id)
-      })
+        })
     }, [bookStoreId])
-    
+
     return (
         <div >
-            <div>
+            <div className="d-flex justify-content-between align-items-center">
                 <h1>Quản lí cửa hàng sách chi nhánh: {bookStoreId}</h1>
+                <Link to="/shop" className="btn btn-primary">
+                    Quay về cửa hàng
+                </Link>
             </div>
             {/* <img src={require('./671822c2f63dd5f65d8fd15c9710420b.jpg')} className="img-fluid"/> */}
             <nav className="navbar navbar-expand-lg navbar-light bg-light">

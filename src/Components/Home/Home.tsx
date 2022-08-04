@@ -40,7 +40,7 @@ export default function Home() {
     return (
         <div className="m-4">
             <Navbar />
-            <h2>Quản lí khách hàng</h2>
+            <h2 className="mt-3 mb-3">Quản lí khách hàng</h2>
             <div className="col-12 col-md-4">
                 <input
                     type="text"
